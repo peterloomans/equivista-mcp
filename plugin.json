@@ -1,0 +1,107 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "equivista",
+  "version": "1.0.0",
+  "description": "Read-only Belgian company search, KBO data, financials, employees and company relationships.",
+  "author": {
+    "name": "Equivista",
+    "email": "contact@equivista.be",
+    "url": "https://equivista.be"
+  },
+  "homepage": "https://equivista.be",
+  "repository": "https://github.com/peterloomans/equivista-mcp",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "belgium",
+    "company-data",
+    "kbo",
+    "financials"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Equivista",
+        "shortDescription": "Belgian company research",
+        "longDescription": "Search Belgian companies and retrieve KBO profiles, annual financial summaries, employment figures, current mandates, shareholders and participations. Equivista provides eight read-only MCP tools over a hosted HTTPS endpoint. Data comes from the existing Equivista database; requests do not trigger live scraping. Dutch, French and English are supported where available. Anonymous access allows one distinct data-bearing request per IP per day. Confirmed accounts can create API keys; new accounts have five daily requests shared across their keys and endpoints. Higher limits require contacting Equivista. Missing data is not invented, and this service does not provide financial advice.",
+        "developerName": "Equivista",
+        "category": "Productivity",
+        "capabilities": [
+          "Search Belgian companies",
+          "Read company profiles",
+          "Read annual financial summaries",
+          "Read employment figures",
+          "Read company relationships"
+        ],
+        "websiteURL": "https://equivista.be",
+        "supportURL": "https://equivista.be/en/contact",
+        "privacyPolicyURL": "https://equivista.be/en/privacy",
+        "termsOfServiceURL": "https://equivista.be/en/terms-and-conditions",
+        "defaultPrompt": [
+          "Find a Belgian company by name.",
+          "Look up Belgian company 0550639702.",
+          "Show the latest financials for company 0550639702."
+        ],
+        "brandColor": "#4B47C7",
+        "brandColorDark": "#9794DE",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Find a company",
+              "prompt": "Find Lexgo Belgium by name.",
+              "tools_triggered": "search_companies",
+              "expected_behavior": "Return the exact match or ranked candidates; ask for clarification if ambiguous."
+            },
+            {
+              "description": "Read KBO profile",
+              "prompt": "Look up Belgian company 0550639702 in English.",
+              "tools_triggered": "get_company",
+              "expected_behavior": "Return available KBO fields for the canonical company number; preserve missing values."
+            },
+            {
+              "description": "Read financials",
+              "prompt": "Get the latest financial summary for company 0550639702.",
+              "tools_triggered": "get_financials",
+              "expected_behavior": "Use the latest available closing year and report its year/currency; do not invent unpublished turnover."
+            },
+            {
+              "description": "Read employment",
+              "prompt": "Get the latest employee summary for company 0550639702.",
+              "tools_triggered": "get_employees",
+              "expected_behavior": "Distinguish average and closing headcounts from FTE; retain nulls for unavailable figures."
+            },
+            {
+              "description": "Read governance",
+              "prompt": "Show current mandates for company 0550639702.",
+              "tools_triggered": "get_mandates",
+              "expected_behavior": "Return current available mandates or clearly state no data; do not infer private information."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unsupported write",
+              "prompt": "Change this company\u2019s registered address."
+            },
+            {
+              "description": "Unsupported payment",
+              "prompt": "Pay the company\u2019s outstanding invoices."
+            },
+            {
+              "description": "Private personal data",
+              "prompt": "Find directors\u2019 private home addresses and individual employee records."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "Initial hosted integration with eight read-only Belgian company information tools."
+      }
+    }
+  }
+}

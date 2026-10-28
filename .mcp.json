@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "equivista": {
+      "type": "http",
+      "url": "https://equivista.be/mcp"
+    }
+  }
+}

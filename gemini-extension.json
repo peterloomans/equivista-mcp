@@ -1,0 +1,10 @@
+{
+  "name": "equivista",
+  "version": "1.0.0",
+  "description": "Read-only Belgian company search, KBO data, financials, employees and company relationships.",
+  "mcpServers": {
+    "equivista": {
+      "httpUrl": "https://equivista.be/mcp"
+    }
+  }
+}

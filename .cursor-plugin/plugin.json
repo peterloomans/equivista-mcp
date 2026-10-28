@@ -1,0 +1,20 @@
+{
+  "name": "equivista",
+  "version": "1.0.0",
+  "description": "Read-only Belgian company search, KBO data, financials, employees and company relationships.",
+  "author": {
+    "name": "Equivista",
+    "email": "contact@equivista.be"
+  },
+  "homepage": "https://equivista.be",
+  "repository": "https://github.com/peterloomans/equivista-mcp",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "belgium",
+    "company-data",
+    "kbo",
+    "financials"
+  ],
+  "logo": "assets/icon.png"
+}
