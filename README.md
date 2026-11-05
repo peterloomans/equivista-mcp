@@ -1,5 +1,7 @@
 # Equivista MCP
 
+[![Equivista MCP on AI Agents Listing](https://aiagentslisting.com/equivista-mcp/badge.svg?claim=e965951f2c08a1fdf598463669c6ce4c)](https://aiagentslisting.com/mcp/equivista-mcp)
+
 Read-only Belgian company search, KBO data, financials, employees and company relationships.
 
 [Documentation](https://equivista.be/api/docs) · [Website](https://equivista.be) · [Official registry](https://registry.modelcontextprotocol.io/v0.1/servers/io.github.peterloomans%2Fequivista/versions/latest)
